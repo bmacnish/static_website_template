@@ -1,0 +1,10 @@
+stacks:
+  ap-southeast-2:
+    logs-bucket:
+      template: logs_bucket.rb
+    root-domain-bucket:
+      template: root_domain_bucket.rb
+    subdomain-bucket:
+      template: subdomain_bucket.rb
+    domain-alias-records:
+      template: domain_alias_records.rb
