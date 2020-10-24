@@ -5,7 +5,7 @@ SparkleFormation.new(:subdomain_bucket) do
     description 'Subdomain'
     type 'String'
   end
-  
+
   parameters.root_domain do
     description 'Root domain to redirect request to'
     type 'String'
