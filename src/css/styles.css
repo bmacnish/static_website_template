@@ -159,7 +159,7 @@ a:hover section{
 }
 
 .full {
-	background: url( url(../images/Images_Becalmed_Heart/tbh12.jpg) no-repeat center center fixed;
+	background: url(../images/Images_Becalmed_Heart/tbh12.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
