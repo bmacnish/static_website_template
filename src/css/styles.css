@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+
+/*Navigation Styling */
+
+.navbar-default {
+  background-color: #f2f6f7;
+  border-color: #e5eff4;
+}
+.navbar-default .navbar-brand {
+  color: #777777;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #4c7eac;
+}
+.navbar-default .navbar-text {
+  color: #777777;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #777777;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #4c7eac;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #4c7eac;
+  background-color: #e5eff4;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #4c7eac;
+  background-color: #e5eff4;
+}
+.navbar-default .navbar-toggle {
+  border-color: #e5eff4;
+  color: #777777;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #e5eff4;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #777777;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #777777;
+}
+.navbar-default .navbar-link {
+  color: #777777;
+}
+.navbar-default .navbar-link:hover {
+  color: #4c7eac;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #777777;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #4c7eac;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #4c7eac;
+    background-color: #e5eff4;
+  }
+}
+
+#section32 body{
+	background-color: black;
+	color: white;
+}
+
+#section32 {
+		text-align: center;
+}
+
+#section32 .jumbotron{
+background-color: black;
+color: white;
+margin-top: 20%;
+}
+
+#section32 h1{
+	font-size: 9em;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+main{
+	padding-bottom: 50px;
+}
+
+
+.lightbg{
+	background-color: #ffffff;
+}
+
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-caption{
+	bottom: 90px;
+}
+
+.carousel-caption-credit{
+	bottom: 70px;
+	font-style:italic;
+}
+
+.carousel-indicators{
+	bottom: 60px;
+}
+
+
+#carousel-caption-credit-s32{
+	bottom: 15px;
+	font-style: italic;
+}
+
+.carousel-indicators-s32{
+	bottom: 10px; 
+}
+
+.icon {
+	max-width: 275px;
+	margin: 0 auto;
+	display: block;
+}
+
+.projects section{
+	text-align: center;
+	padding-top: 30px;
+	}
+
+a section {
+	color: black;
+}
+
+a:hover section{
+	color: #4c7eac;
+}
+
+.imgdivide {
+	padding: 50px 0 50px 0;
+}
+
+.full {
+	background: url(../images/Images_Becalmed_Heart/tbh12.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.video {
+	padding: 50px 0;
+}
+
+#cvModal{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.photocredit{
+	font-style: italic;
+	margin: 5px;
+}
