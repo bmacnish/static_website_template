@@ -1,0 +1,4 @@
+domain: briennamacnish.com
+index_document: index.html
+logs_bucket: 
+  stack_output: logs-bucket/LogsBucketName
