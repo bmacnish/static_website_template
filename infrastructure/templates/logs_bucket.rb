@@ -5,16 +5,16 @@ SparkleFormation.new(:logs_bucket) do
     description 'domain'
     type 'String'
   end
-  
+
   resources.logs_bucket do
     type 'AWS::S3::Bucket'
     deletion_policy 'Retain'
     properties do
       bucket_name ref!(:domain)
-      access_control "LogDeliveryWrite"
+      access_control 'LogDeliveryWrite'
     end
   end
-  
+
   outputs.logs_bucket_name do
     description 'logs_bucket_name '
     value ref!(:logs_bucket)

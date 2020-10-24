@@ -1,0 +1,19 @@
+Metrics/BlockLength:
+    Exclude:
+    - 'infrastructure/templates/*.rb'
+
+# Breaks AWS formats where hashes are needed inside of arrays.
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

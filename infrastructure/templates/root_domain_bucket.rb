@@ -15,7 +15,7 @@ SparkleFormation.new(:root_domain_bucket) do
     description 'Destination for access logs'
     type 'String'
   end
-  
+
   resources.root_domain_bucket do
     type 'AWS::S3::Bucket'
     deletion_policy 'Retain'
@@ -27,7 +27,7 @@ SparkleFormation.new(:root_domain_bucket) do
       logging_configuration do
         destination_bucket_name ref!(:logs_bucket)
         log_file_prefix 'logs/'
-			end
+      end
     end
   end
 
@@ -36,16 +36,16 @@ SparkleFormation.new(:root_domain_bucket) do
     properties do
       bucket ref!(:domain)
       policy_document do
-        version "2012-10-17"
+        version '2012-10-17'
         statement array!(
-         -> {
-           sid "PublicReadGetObject"
-           effect "Allow"
-           principal "*"
-           action "s3:GetObject"
-           resource ["arn:aws:s3:::briennamacnish.com/*"]
-         },
-       )
+          lambda {
+            sid 'PublicReadGetObject'
+            effect 'Allow'
+            principal '*'
+            action 's3:GetObject'
+            resource ['arn:aws:s3:::briennamacnish.com/*']
+          },
+        )
       end
     end
   end
@@ -54,7 +54,7 @@ SparkleFormation.new(:root_domain_bucket) do
     description 'Url '
     value get_att!(:root_domain_bucket, 'WebsiteURL')
   end
-  
+
   outputs.root_domain do
     description 'Root domain'
     value ref!(:domain)
