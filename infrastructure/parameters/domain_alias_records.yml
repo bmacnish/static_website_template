@@ -1,6 +1,7 @@
 root_domain: 
   stack_output: root-domain-bucket/RootDomain
-subdomain: www.
+subdomain:
+  stack_output: subdomain-bucket/Subdomain
+endpoint_hosted_zone_id: Z1WCIGYICN2BYD
 hosted_zone_id: Z00287071OZ0V8EGWSXL1
 aliased_domain: s3-website-ap-southeast-2.amazonaws.com
-region: ap-southeast-2

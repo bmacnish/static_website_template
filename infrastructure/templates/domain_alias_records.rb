@@ -1,5 +1,4 @@
 SparkleFormation.new(:domain_alias_records) do
-
   parameters.root_domain do
     description 'root domain'
     type 'String'
@@ -9,19 +8,19 @@ SparkleFormation.new(:domain_alias_records) do
     description 'subdomain'
     type 'String'
   end
-  
+
   parameters.hosted_zone_id do
     description 'hosted zone id'
     type 'String'
   end
 
-  parameters.aliased_domain do
-    description 'Location of s3 bucket that the alias points to'
+  parameters.endpoint_hosted_zone_id do
+    description 'hosted zone id AWS defines for static website s3 endpoints'
     type 'String'
   end
-  
-  parameters.region do
-    description 'region'
+
+  parameters.aliased_domain do
+    description 'Location of s3 bucket that the alias points to'
     type 'String'
   end
 
@@ -32,11 +31,9 @@ SparkleFormation.new(:domain_alias_records) do
       type 'A'
       alias_target do
         d_n_s_name ref!(:aliased_domain)
-        hosted_zone_id ref!(:hosted_zone_id)
+        hosted_zone_id ref!(:endpoint_hosted_zone_id)
       end
-      region ref!(:region)
       hosted_zone_id ref!(:hosted_zone_id)
-      set_identifier 'briennamacnish.com'
     end
   end
 
@@ -47,12 +44,9 @@ SparkleFormation.new(:domain_alias_records) do
       type 'A'
       alias_target do
         d_n_s_name ref!(:aliased_domain)
-        hosted_zone_id ref!(:hosted_zone_id)
+        hosted_zone_id ref!(:endpoint_hosted_zone_id)
       end
-      region ref!(:region)
       hosted_zone_id ref!(:hosted_zone_id)
-      set_identifier 'www.briennamacnish.com'
     end
   end
 end
-
