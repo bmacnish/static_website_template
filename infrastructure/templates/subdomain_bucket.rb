@@ -6,6 +6,11 @@ SparkleFormation.new(:subdomain_bucket) do
     type 'String'
   end
   
+  parameters.root_domain do
+    description 'Root domain to redirect request to'
+    type 'String'
+  end
+
   resources.subdomain_bucket do
     type 'AWS::S3::Bucket'
     deletion_policy 'Retain'
@@ -13,13 +18,13 @@ SparkleFormation.new(:subdomain_bucket) do
       bucket_name ref!(:domain)
       website_configuration do
         redirect_all_requests_to do
-          host_name ref!(:domain)
+          host_name ref!(:root_domain)
           protocol 'http'
         end
       end
     end
   end
-  
+
   outputs.website_endpoint do
     description 'Url '
     value get_att!(:subdomain_bucket, 'WebsiteURL')
@@ -29,5 +34,4 @@ SparkleFormation.new(:subdomain_bucket) do
     description 'Subdomain'
     value ref!(:domain)
   end
-  
 end
