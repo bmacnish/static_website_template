@@ -1,3 +1,17 @@
+# briennamacnish.com
+
+## Website
+This project is a static website built using HTML, CSS and the Bootstrap(3.3.6) framework.
+
+## Deployment
+
+To deploy changes to the content of the project you will need to run the following command.
+
+```bash
+ave powerbrie -- aws s3 sync . s3://briennamacnish.com
+```
+
+
 ## Infrastructure
 
 This project is a static website hosted on AWS infrastructure.
