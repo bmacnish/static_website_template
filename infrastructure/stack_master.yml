@@ -1,4 +1,7 @@
 stacks:
+  us-east-1:
+    certificate:
+      template: certificate.rb
   ap-southeast-2:
     logs-bucket:
       template: logs_bucket.rb
