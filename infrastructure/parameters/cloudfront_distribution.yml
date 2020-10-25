@@ -1,0 +1,9 @@
+aws_website_endpoint: briennamacnish.com.s3-website-ap-southeast-2.amazonaws.com
+header: o7Pv2JFuoe9fzbAH4uLu7aT2mBwVwpp
+root_domain: 
+  stack_output: root-domain-bucket/RootDomain
+subdomain:
+  stack_output: subdomain-bucket/Subdomain
+header: '82hkk983d4u5bf6j77I0d'
+acm_certificate_arn:
+  stack_output: us-east-1:certificate/CertificateArn
