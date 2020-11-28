@@ -16,18 +16,7 @@ SparkleFormation.new(:subdomain_bucket) do
     deletion_policy 'Retain'
     properties do
       bucket_name ref!(:domain)
-      website_configuration do
-        redirect_all_requests_to do
-          host_name ref!(:root_domain)
-          protocol 'https'
-        end
-      end
     end
-  end
-
-  outputs.website_endpoint do
-    description 'Url '
-    value get_att!(:subdomain_bucket, 'WebsiteURL')
   end
 
   outputs.subdomain do
