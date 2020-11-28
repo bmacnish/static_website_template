@@ -11,3 +11,6 @@ stacks:
       template: subdomain_bucket.rb
     domain-alias-records:
       template: domain_alias_records.rb
+    cloudfront-distribution: 
+      template: cloudfront_distribution.rb
+

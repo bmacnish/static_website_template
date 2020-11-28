@@ -2,6 +2,9 @@ root_domain:
   stack_output: root-domain-bucket/RootDomain
 subdomain:
   stack_output: subdomain-bucket/Subdomain
-endpoint_hosted_zone_id: Z1WCIGYICN2BYD
+cloudfront_hosted_zone_id: Z2FDTNDATAQYW2
 hosted_zone_id: Z00287071OZ0V8EGWSXL1
-aliased_domain: s3-website-ap-southeast-2.amazonaws.com
+root_domain_cloudfront_distribution_domain:
+  stack_output: cloudfront-distribution/RootDomainCloudfrontDistributionDomain 
+subdomain_cloudfront_distribution_domain:
+  stack_output: cloudfront-distribution/SubdomainCloudfrontDistributionDomain 

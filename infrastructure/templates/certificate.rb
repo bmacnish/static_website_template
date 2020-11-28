@@ -5,6 +5,11 @@ SparkleFormation.new(:certificate_dns_validation) do
     description "Target domain name"
     type "String"
   end
+  
+  parameters.alternate_domain_name do
+    description "Alternate domain name"
+    type "String"
+  end
 
   parameters.hosted_zone_id do
     description "Hosted Zone ID"
@@ -14,14 +19,15 @@ SparkleFormation.new(:certificate_dns_validation) do
   resources.certificate do
     type "AWS::CertificateManager::Certificate"
     properties do
-        domain_name ref!(:domain_name)
-        domain_validation_options array!(
-          -> {
-            domain_name ref!(:domain_name)
-            hosted_zone_id ref!(:hosted_zone_id)
-          }
-        )
-        validation_method "DNS"
+      domain_name ref!(:domain_name)
+      domain_validation_options array!(
+        -> {
+          domain_name ref!(:domain_name)
+          hosted_zone_id ref!(:hosted_zone_id)
+        }
+      )
+      validation_method "DNS"
+      subject_alternative_names [ref!(:alternate_domain_name)]
     end
   end
 

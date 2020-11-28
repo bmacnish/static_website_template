@@ -14,13 +14,18 @@ SparkleFormation.new(:domain_alias_records) do
     type 'String'
   end
 
-  parameters.endpoint_hosted_zone_id do
+  parameters.cloudfront_hosted_zone_id do
     description 'hosted zone id AWS defines for static website s3 endpoints'
     type 'String'
   end
 
-  parameters.aliased_domain do
-    description 'Location of s3 bucket that the alias points to'
+  parameters.root_domain_cloudfront_distribution_domain do
+    description 'Cloudfront distribution for the root domain'
+    type 'String'
+  end
+
+  parameters.subdomain_cloudfront_distribution_domain do
+    description 'Cloudfront distribution for the subdomain'
     type 'String'
   end
 
@@ -30,8 +35,8 @@ SparkleFormation.new(:domain_alias_records) do
       name ref!(:root_domain)
       type 'A'
       alias_target do
-        d_n_s_name ref!(:aliased_domain)
-        hosted_zone_id ref!(:endpoint_hosted_zone_id)
+        d_n_s_name ref!(:root_domain_cloudfront_distribution_domain)
+        hosted_zone_id ref!(:cloudfront_hosted_zone_id)
       end
       hosted_zone_id ref!(:hosted_zone_id)
     end
@@ -43,8 +48,8 @@ SparkleFormation.new(:domain_alias_records) do
       name ref!(:subdomain)
       type 'A'
       alias_target do
-        d_n_s_name ref!(:aliased_domain)
-        hosted_zone_id ref!(:endpoint_hosted_zone_id)
+        d_n_s_name ref!(:subdomain_cloudfront_distribution_domain)
+        hosted_zone_id ref!(:cloudfront_hosted_zone_id)
       end
       hosted_zone_id ref!(:hosted_zone_id)
     end

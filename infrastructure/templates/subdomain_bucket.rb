@@ -19,7 +19,7 @@ SparkleFormation.new(:subdomain_bucket) do
       website_configuration do
         redirect_all_requests_to do
           host_name ref!(:root_domain)
-          protocol 'http'
+          protocol 'https'
         end
       end
     end
