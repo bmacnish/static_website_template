@@ -30,6 +30,12 @@ SparkleFormation.new(:root_domain_bucket) do
         destination_bucket_name ref!(:logs_bucket)
         log_file_prefix 'logs/'
       end
+      public_access_block_configuration do
+        block_public_acls true
+        block_public_policy true
+        ignore_public_acls true
+        restrict_public_buckets true
+      end
     end
   end
 

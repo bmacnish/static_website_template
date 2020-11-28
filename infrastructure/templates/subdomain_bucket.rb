@@ -16,6 +16,12 @@ SparkleFormation.new(:subdomain_bucket) do
     deletion_policy 'Retain'
     properties do
       bucket_name ref!(:domain)
+      public_access_block_configuration do
+        block_public_acls true
+        block_public_policy true
+        ignore_public_acls true
+        restrict_public_buckets true
+      end
     end
   end
 
