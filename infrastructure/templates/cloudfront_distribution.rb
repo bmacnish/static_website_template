@@ -57,7 +57,7 @@ SparkleFormation.new(:cloudfront_distribution) do
           id join!(ref!(:root_domain), "cloudfront-distribution")
           domain_name ref!(:s3_bucket_root_domain)
           s3_origin_config do
-              origin_access_identity join!('origin-access-identity/cloudfront/',ref!(:oai))
+              origin_access_identity join!('origin-access-identity/cloudfront/', ref!(:oai))
             end
           }
         )
@@ -93,15 +93,9 @@ SparkleFormation.new(:cloudfront_distribution) do
           -> {
           id join!(ref!(:subdomain), "cloudfront-distribution")
           domain_name ref!(:s3_bucket_root_domain)
-          origin_custom_headers array!(
-            -> {
-              header_name 'Referer'
-              header_value ref!(:header)
-            }
-          )
-          custom_origin_config do
-            origin_protocol_policy 'https-only'
-          end
+          s3_origin_config do
+              origin_access_identity join!('origin-access-identity/cloudfront/', ref!(:oai))
+            end
           }
         )
         viewer_certificate do
