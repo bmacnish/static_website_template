@@ -1,3 +1,4 @@
-domain_name: www.briennamacnish.com
-alternate_domain_name: briennamacnish.com
-hosted_zone_id: Z00287071OZ0V8EGWSXL1
+domain_name: www.examplewebsite.com
+alternate_domain_name: examplewebsite.com
+# TODO: Add your hosted zone
+# hosted_zone_id: ID_OF_HOSTED_ZONE

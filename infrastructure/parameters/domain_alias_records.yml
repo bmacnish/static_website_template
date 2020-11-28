@@ -1,10 +1,12 @@
-root_domain: 
+root_domain:
   stack_output: root-domain-bucket/RootDomain
 subdomain:
   stack_output: subdomain-bucket/Subdomain
-cloudfront_hosted_zone_id: Z2FDTNDATAQYW2
-hosted_zone_id: Z00287071OZ0V8EGWSXL1
+# TODO: Add Cloudfront hosted zone id
+# cloudfront_hosted_zone_id: <CLOUDFRONT_HOSTED_ZONE_ID>
+# TODO: Add hosted zone id
+# hosted_zone_id: <HOSTED_ZONE_ID>
 root_domain_cloudfront_distribution_domain:
-  stack_output: cloudfront-distribution/RootDomainCloudfrontDistributionDomain 
+  stack_output: cloudfront-distribution/RootDomainCloudfrontDistributionDomain
 subdomain_cloudfront_distribution_domain:
-  stack_output: cloudfront-distribution/SubdomainCloudfrontDistributionDomain 
+  stack_output: cloudfront-distribution/SubdomainCloudfrontDistributionDomain

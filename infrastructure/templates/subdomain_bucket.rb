@@ -1,5 +1,5 @@
 SparkleFormation.new(:subdomain_bucket) do
-  description 'Root domain bucket for briennamacnish.com'
+  description 'Root domain bucket for examplewebsite.com'
 
   parameters.domain do
     description 'Subdomain'

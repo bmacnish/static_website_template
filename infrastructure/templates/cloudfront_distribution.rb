@@ -32,34 +32,34 @@ SparkleFormation.new(:cloudfront_distribution) do
       end
     end
   end
-  
+
   resources.cloudfront_distribution_root_domain do
-    type "AWS::CloudFront::Distribution"
+    type 'AWS::CloudFront::Distribution'
     properties do
-      distribution_config do 
+      distribution_config do
         enabled true
         aliases [ref!(:root_domain)]
         default_root_object 'index.html'
         default_cache_behavior do
           compress true
           viewer_protocol_policy 'redirect-to-https'
-          allowed_methods ['GET', 'HEAD']
-          target_origin_id join!(ref!(:root_domain), "cloudfront-distribution")
+          allowed_methods %w[GET HEAD]
+          target_origin_id join!(ref!(:root_domain), 'cloudfront-distribution')
           forwarded_values do
             query_string false
             cookies do
-              forward "none"
+              forward 'none'
             end
           end
         end
-        origins array!( 
+        origins array!(
           -> {
-          id join!(ref!(:root_domain), "cloudfront-distribution")
-          domain_name ref!(:s3_bucket_root_domain)
-          s3_origin_config do
+            id join!(ref!(:root_domain), 'cloudfront-distribution')
+            domain_name ref!(:s3_bucket_root_domain)
+            s3_origin_config do
               origin_access_identity join!('origin-access-identity/cloudfront/', ref!(:oai))
             end
-          }
+          },
         )
         viewer_certificate do
           acm_certificate_arn ref!(:acm_certificate_arn)
@@ -71,32 +71,32 @@ SparkleFormation.new(:cloudfront_distribution) do
   end
 
   resources.cloudfront_distribution_subdomain do
-    type "AWS::CloudFront::Distribution"
+    type 'AWS::CloudFront::Distribution'
     properties do
-      distribution_config do 
+      distribution_config do
         enabled true
         aliases [ref!(:subdomain)]
         default_root_object 'index.html'
         default_cache_behavior do
           compress true
           viewer_protocol_policy 'redirect-to-https'
-          allowed_methods ['GET', 'HEAD']
-          target_origin_id join!(ref!(:subdomain), "cloudfront-distribution")
+          allowed_methods %w[GET HEAD]
+          target_origin_id join!(ref!(:subdomain), 'cloudfront-distribution')
           forwarded_values do
             query_string false
             cookies do
-              forward "none"
+              forward 'none'
             end
           end
         end
-        origins array!( 
+        origins array!(
           -> {
-          id join!(ref!(:subdomain), "cloudfront-distribution")
-          domain_name ref!(:s3_bucket_root_domain)
-          s3_origin_config do
+            id join!(ref!(:subdomain), 'cloudfront-distribution')
+            domain_name ref!(:s3_bucket_root_domain)
+            s3_origin_config do
               origin_access_identity join!('origin-access-identity/cloudfront/', ref!(:oai))
             end
-          }
+          },
         )
         viewer_certificate do
           acm_certificate_arn ref!(:acm_certificate_arn)
@@ -119,6 +119,6 @@ SparkleFormation.new(:cloudfront_distribution) do
 
   outputs.oai_canonical_user_id do
     description 'The Amazon S3 canonical user ID for the origin access identity.'
-    value attr!(:oai,'S3CanonicalUserId')
+    value attr!(:oai, 'S3CanonicalUserId')
   end
 end

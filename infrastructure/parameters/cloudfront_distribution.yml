@@ -1,4 +1,4 @@
-s3_bucket_root_domain: briennamacnish.com.s3.ap-southeast-2.amazonaws.com
+s3_bucket_root_domain: examplewebsite.com.s3.ap-southeast-2.amazonaws.com
 root_domain:
   stack_output: root-domain-bucket/RootDomain
 subdomain:

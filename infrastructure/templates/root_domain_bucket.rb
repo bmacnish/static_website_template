@@ -1,5 +1,5 @@
 SparkleFormation.new(:root_domain_bucket) do
-  description 'Root domain bucket for briennamacnish.com'
+  description 'Root domain bucket for examplewebsite.com'
 
   parameters.domain do
     description 'Root domain'
@@ -8,11 +8,6 @@ SparkleFormation.new(:root_domain_bucket) do
 
   parameters.index_document do
     description 'Index document'
-    type 'String'
-  end
-
-  parameters.logs_bucket do
-    description 'Destination for access logs'
     type 'String'
   end
 
@@ -26,10 +21,6 @@ SparkleFormation.new(:root_domain_bucket) do
     deletion_policy 'Retain'
     properties do
       bucket_name ref!(:domain)
-      logging_configuration do
-        destination_bucket_name ref!(:logs_bucket)
-        log_file_prefix 'logs/'
-      end
       public_access_block_configuration do
         block_public_acls true
         block_public_policy true
@@ -52,10 +43,10 @@ SparkleFormation.new(:root_domain_bucket) do
               canonical_user ref!(:oai_user)
             end
             action _array(
-              's3:GetObject'
+              's3:GetObject',
             )
-            resource join!('arn:aws:s3:::',ref!(:root_domain_bucket),'/*')
-          }
+            resource join!('arn:aws:s3:::', ref!(:root_domain_bucket), '/*')
+          },
         )
       end
     end

@@ -1,4 +1,3 @@
-domain: www.briennamacnish.com
-root_domain: 
+domain: www.examplewebsite.com
+root_domain:
   stack_output: root-domain-bucket/RootDomain
-
