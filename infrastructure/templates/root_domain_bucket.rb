@@ -16,6 +16,11 @@ SparkleFormation.new(:root_domain_bucket) do
     type 'String'
   end
 
+  parameters.oai_user do
+    description 'OAI user with access to bucket'
+    type 'String'
+  end
+
   resources.root_domain_bucket do
     type 'AWS::S3::Bucket'
     deletion_policy 'Retain'
@@ -24,6 +29,28 @@ SparkleFormation.new(:root_domain_bucket) do
       logging_configuration do
         destination_bucket_name ref!(:logs_bucket)
         log_file_prefix 'logs/'
+      end
+    end
+  end
+
+  resources.oai_bucket_policy do
+    type 'AWS::S3::BucketPolicy'
+    properties do
+      bucket ref!(:root_domain_bucket)
+      policy_document do
+        version '2012-10-17'
+        statement _array(
+          -> {
+            effect 'Allow'
+            principal do
+              canonical_user ref!(:oai_user)
+            end
+            action _array(
+              's3:GetObject'
+            )
+            resource join!('arn:aws:s3:::',ref!(:root_domain_bucket),'/*')
+          }
+        )
       end
     end
   end

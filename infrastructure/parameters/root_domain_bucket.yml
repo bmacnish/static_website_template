@@ -1,4 +1,6 @@
 domain: briennamacnish.com
 index_document: index.html
-logs_bucket: 
+logs_bucket:
   stack_output: logs-bucket/LogsBucketName
+oai_user:
+  stack_output: cloudfront-distribution/OaiCanonicalUserId

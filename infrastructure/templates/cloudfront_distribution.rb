@@ -9,7 +9,7 @@ SparkleFormation.new(:cloudfront_distribution) do
     type 'String'
   end
 
-  parameters.aws_website_endpoint do
+  parameters.s3_bucket_root_domain do
     description 'The AWS defined website endpoint for static websites in ap-southeast-2'
     type 'String'
   end
@@ -22,6 +22,15 @@ SparkleFormation.new(:cloudfront_distribution) do
   parameters.acm_certificate_arn do
     description 'ARN of ACM defined SSL certificate'
     type 'String'
+  end
+
+  resources.oai do
+    type 'AWS::CloudFront::CloudFrontOriginAccessIdentity'
+    properties do
+      cloud_front_origin_access_identity_config do
+        comment join!('OAI for accessing ', ref!(:root_domain))
+      end
+    end
   end
   
   resources.cloudfront_distribution_root_domain do
@@ -37,7 +46,7 @@ SparkleFormation.new(:cloudfront_distribution) do
           allowed_methods ['GET', 'HEAD']
           target_origin_id join!(ref!(:root_domain), "cloudfront-distribution")
           forwarded_values do
-          query_string false
+            query_string false
             cookies do
               forward "none"
             end
@@ -46,16 +55,10 @@ SparkleFormation.new(:cloudfront_distribution) do
         origins array!( 
           -> {
           id join!(ref!(:root_domain), "cloudfront-distribution")
-          domain_name ref!(:aws_website_endpoint)
-          origin_custom_headers array!(
-            -> {
-              header_name 'Referer'
-              header_value ref!(:header)
-            }
-          )
-          custom_origin_config do
-            origin_protocol_policy 'https-only'
-          end
+          domain_name ref!(:s3_bucket_root_domain)
+          s3_origin_config do
+              origin_access_identity join!('origin-access-identity/cloudfront/',ref!(:oai))
+            end
           }
         )
         viewer_certificate do
@@ -89,7 +92,7 @@ SparkleFormation.new(:cloudfront_distribution) do
         origins array!( 
           -> {
           id join!(ref!(:subdomain), "cloudfront-distribution")
-          domain_name ref!(:aws_website_endpoint)
+          domain_name ref!(:s3_bucket_root_domain)
           origin_custom_headers array!(
             -> {
               header_name 'Referer'
@@ -118,5 +121,10 @@ SparkleFormation.new(:cloudfront_distribution) do
   outputs.subdomain_cloudfront_distribution_domain do
     description 'Domain name for the Cloudfront distribution for root domain'
     value get_att!(:cloudfront_distribution_subdomain, 'DomainName')
+  end
+
+  outputs.oai_canonical_user_id do
+    description 'The Amazon S3 canonical user ID for the origin access identity.'
+    value attr!(:oai,'S3CanonicalUserId')
   end
 end
