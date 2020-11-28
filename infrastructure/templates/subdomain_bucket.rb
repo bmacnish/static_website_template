@@ -16,18 +16,13 @@ SparkleFormation.new(:subdomain_bucket) do
     deletion_policy 'Retain'
     properties do
       bucket_name ref!(:domain)
-      website_configuration do
-        redirect_all_requests_to do
-          host_name ref!(:root_domain)
-          protocol 'http'
-        end
+      public_access_block_configuration do
+        block_public_acls true
+        block_public_policy true
+        ignore_public_acls true
+        restrict_public_buckets true
       end
     end
-  end
-
-  outputs.website_endpoint do
-    description 'Url '
-    value get_att!(:subdomain_bucket, 'WebsiteURL')
   end
 
   outputs.subdomain do

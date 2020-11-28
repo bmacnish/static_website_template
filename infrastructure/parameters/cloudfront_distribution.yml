@@ -1,0 +1,7 @@
+s3_bucket_root_domain: briennamacnish.com.s3.ap-southeast-2.amazonaws.com
+root_domain:
+  stack_output: root-domain-bucket/RootDomain
+subdomain:
+  stack_output: subdomain-bucket/Subdomain
+acm_certificate_arn:
+  stack_output: us-east-1:certificate/CertificateArn
