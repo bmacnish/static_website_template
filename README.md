@@ -29,7 +29,7 @@ All the AWS commands referenced here must be run with a user and role with the r
 1. Bring up the infrastructure defined in the `stack_master.yml` file
 1. Add your website to the `src/` folder ensuring that the main entry point to your site is called `index.html`
 
-## Deployment
+## Deploying website changes
 
 To deploy changes to the content of the project you will need to run the following command.
 
@@ -45,7 +45,7 @@ All the infrastructure for this project has been defined as code with the except
 
 The project is deployed in `ap-southeast-2`
 
-## Deployment
+## Deploying infrastructure changes
 
 Update the relevant infrastructure templates and parameter files.
 
